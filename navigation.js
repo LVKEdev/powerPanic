@@ -22,7 +22,9 @@ var SceneNavigation = new Phaser.Class({
         this.icon.scaleX = 1/8;
         this.icon.scaleY = 1/8;
         this.backKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-
+        this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+        this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     },
 
     update: function (timestep, dt) {
@@ -30,6 +32,9 @@ var SceneNavigation = new Phaser.Class({
             console.log('Switching back to menu');
             this.scene.start('SceneStart');
         }
+        if(this.keyW.isDown) this.scene.start('SceneWeapons');
+        if(this.keyP.isDown) this.scene.start('ScenePiloting');
+        if(this.keyS.isDown) this.scene.start('SceneShields');
     }
 
 });
